@@ -1,0 +1,108 @@
+# Clase Persona
+class Persona:
+    print("Bienvenido al sistema parcial 1 parte 2")
+    print("MATTHEW FLORES MEJIA 153825\n")
+
+    def __init__(self, nombre, fecha_nacimiento, municipio, salario=0, division=None, conyuge=None):
+        self.nombre = nombre
+        self.fecha_nacimiento = fecha_nacimiento
+        self.municipio = municipio
+        self.salario = salario
+        self.division = division
+        self.conyuge = conyuge
+        self.servicios = []
+
+
+
+    def agregar_cliente(self, cliente):
+        self.servicios.append(cliente)
+
+    def eliminar_cliente(self, cliente):
+        if cliente in self.servicios:
+            self.servicios.remove(cliente)
+
+    def agregar_empleado(self, division, salario):
+        self.division = division
+        self.salario = salario
+
+    def modificar_empleado(self, nuevo_salario):
+        self.salario = nuevo_salario
+
+# Clase CuentaAhorro
+class CuentaAhorro:
+    def __init__(self, numero_cuenta, fecha_creacion, interes_anual):
+        self.numero_cuenta = numero_cuenta
+        self.fecha_creacion = fecha_creacion
+        self.interes_anual = interes_anual
+
+# Clase TarjetaCredito
+class TarjetaCredito:
+    def __init__(self, numero_tarjeta, fecha_adquisicion, fecha_vencimiento, tipo_tarjeta, limite_credito):
+        self.numero_tarjeta = numero_tarjeta
+        self.fecha_adquisicion = fecha_adquisicion
+        self.fecha_vencimiento = fecha_vencimiento
+        self.tipo_tarjeta = tipo_tarjeta
+        self.limite_credito = limite_credito
+
+# Clase TarjetaDebito
+class TarjetaDebito:
+    def __init__(self, numero_tarjeta, fecha_adquisicion, fecha_vencimiento, numero_cuenta_asociada):
+        self.numero_tarjeta = numero_tarjeta
+        self.fecha_adquisicion = fecha_adquisicion
+        self.fecha_vencimiento = fecha_vencimiento
+        self.numero_cuenta_asociada = numero_cuenta_asociada
+
+# Clase Chequera
+class Chequera:
+    def __init__(self, numero_chequera, fecha_adquisicion, fecha_vencimiento, cantidad_cheques):
+        self.numero_chequera = numero_chequera
+        self.fecha_adquisicion = fecha_adquisicion
+        self.fecha_vencimiento = fecha_vencimiento
+        self.cantidad_cheques = cantidad_cheques
+
+# Creamos datos:
+
+#Creamos personal
+Empleado1 = Persona("Carlos alberto", "1990-05-14", "San jose pinula", conyuge=" Maria Jose")
+Empleado1.agregar_empleado("Contabilidad", 20000)
+
+Empleado2 = Persona("Julio Morales", "1985-07-31", "Villa Nueva")
+Empleado2.agregar_empleado("Departamento Tecnico", 6000)
+
+
+# Crear un cliente (persona)
+cliente1 = Persona("Juan Perez", "1990-05-15", "Villa nueva")
+cliente2 = Persona("Matthew Flores", "2004-10-31", "Palencia")
+
+# Crear una cuenta de ahorro
+cuenta_ahorro1 = CuentaAhorro(12345, "2023-09-01", 2.5)
+cuenta_ahorro2 = CuentaAhorro(55696, "2024-09-29", 3.6)
+
+
+# Crear una tarjeta de crédito
+tarjeta_credito1 = TarjetaCredito(67890, "2023-09-05", "2025-09-05", "Sol", 10000)
+tarjeta_credito2 = TarjetaCredito(98663, "2023-10-25", "2025-09-05", "Luna", 36000)
+
+# Crear una tarjeta de débito
+tarjeta_debito1 = TarjetaDebito(11223, "2023-09-10", "2027-09-10", 12345)
+tarjeta_debito2 = TarjetaDebito(36962, "2024-01-10", "2027-09-10", 55696)
+
+# Crear una chequera
+chequera1 = Chequera(44556, "2023-09-15", "2024-09-15", 50)
+chequera2 = Chequera(23336, "2023-06-20", "2024-09-15", 25)
+
+# Agregar servicios a la persona (cliente)
+cliente1.agregar_cliente(cuenta_ahorro1)
+cliente1.agregar_cliente(tarjeta_credito1)
+cliente1.agregar_cliente(tarjeta_debito1)
+cliente1.agregar_cliente(chequera1)
+
+
+
+# Mostrar los servicios del cliente
+print(f"Servicios de {cliente1.nombre}:")
+for servicio in cliente1.servicios:
+    print(type(servicio).__name__)  # Esto mostrará el tipo de servicio (CuentaAhorro, TarjetaCredito, etc.)
+
+#Mostrar datos de empleados: 
+print(f"Datos del empleado: Nombre: {Empleado1.nombre}, Division:{Empleado1.division}, Salario:{Empleado1.salario}, conyuge:{Empleado1.conyuge}")
